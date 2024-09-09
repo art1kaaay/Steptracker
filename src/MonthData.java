@@ -1,3 +1,5 @@
+//R лишние импорты лучше удалять
+
 import javax.xml.crypto.Data;
 import java.io.DataOutput;
 import java.util.Scanner;
@@ -33,7 +35,12 @@ public class MonthData {
     int bestSeries(int goalByStepsPerDay) {
         int currencySeries = 0;
         int finalSeries = 0;
+        // Red
+        // Баг связан с тем, что самый первый день в месяце не учитывается
         for (int i = 1; i < (days.length); i++) {
+            // Red
+            // Если цель 10000, а шагов так же 10000,
+            // то программа не будет считать это как выполненный план
             if (days[i] > goalByStepsPerDay){
                 currencySeries = currencySeries + 1;
             } else{
